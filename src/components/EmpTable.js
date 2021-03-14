@@ -21,10 +21,21 @@ class EmployeeTable extends Component {
     // Replace our component's state with newState, load the next dog image
 
     render() {
+        // const rows = [];
+        // const employee = this.props.name
+
+        // this.props.employees.forEach((employee) =>
+        // rows.push({this.employee.state})
+
+        // ))
         return (
             <div>
                 <h1 className="text-center">Employee List</h1>
-                <Card image={this.state.image} handleBtnClick={this.handleBtnClick} />
+                <table>
+                    <tbody><Card image={this.state.image} handleBtnClick={this.handleBtnClick} /></tbody>
+
+                </table>
+
 
             </div>
         );
