@@ -2,7 +2,8 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper";
-import API from "./utils/API";
+import EmployeeTable from "./components/EmpTable";
+import EmpFilter from "./components/EmpFilter";
 
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
       <div className="container">
         <Wrapper>
           <h1 className="mt-3">Employee Directory</h1>
+          <EmpFilter />
           <div className="row mt-3">
-
+            <EmployeeTable />
 
           </div>
         </Wrapper>
