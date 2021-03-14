@@ -2,25 +2,26 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper";
+import API from "./utils/API";
 
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Wrapper>
-        <header className="App-header">
-          <h1>Employee Directory</h1>
-
-          <p>
-
-          </p>
+      <div className="container">
+        <Wrapper>
+          <h1 className="mt-3">Employee Directory</h1>
+          <div className="row mt-3">
 
 
+          </div>
+        </Wrapper>
+      </div>
 
-        </header>
-      </Wrapper>
+
     </div>
+
   );
 }
 
