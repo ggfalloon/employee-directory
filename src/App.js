@@ -1,25 +1,25 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./components/Navbar";
+import Wrapper from "./components/Wrapper";
 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Employee Directory</h1>
+    <div>
+      <Navbar />
+      <Wrapper>
+        <header className="App-header">
+          <h1>Employee Directory</h1>
 
-        <p>
+          <p>
 
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+          </p>
+
+
+
+        </header>
+      </Wrapper>
     </div>
   );
 }
