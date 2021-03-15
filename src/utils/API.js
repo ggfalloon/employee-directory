@@ -2,9 +2,12 @@ import axios from "axios";
 
 export default {
     getAllEmp: function () {
-        return axios.get('https://randomuser.me/api/');
+        return axios.get("https://randomuser.me/api/?nat=us&results=15");
     }
-    // getByLocation: function (location) {
+
+};
+
+   // getByLocation: function (location) {
     //     return axios.get();
     // },
     // filterByAge: function () {
@@ -13,4 +16,3 @@ export default {
     // getRandomEmp: function () {
     //     return axios.get();
     // }
-};

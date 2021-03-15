@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Card from "../components/Card";
+
 
 class EmployeeTable extends Component {
     state = {
-        image: "",
+        picture: "",
         name: "",
         email: "",
         phone: 0,
@@ -14,11 +14,24 @@ class EmployeeTable extends Component {
 
     // When the component mounts, load the next dog to be displayed
     componentDidMount() {
-        API.getAllEmp()
-            .then(res => this.setState())
-            .catch(err => console.log(err));
+        this.loadAllEmps();
     }
+
     // Replace our component's state with newState, load the next dog image
+    loadAllEmps = () => {
+        API.getAllEmp()
+            .then(res =>
+                this.setState([{
+                    picture: res.data.picture,
+                    name: res.data.name,
+                    email: res.data.email,
+                    phone: res.data.phone,
+                    location: res.data.location,
+                    age: res.data.age
+                }])
+            )
+            .catch(err => console.log(err));
+    };
 
     render() {
         // const rows = [];
@@ -32,11 +45,8 @@ class EmployeeTable extends Component {
             <div>
                 <h1 className="text-center">Employee List</h1>
                 <table>
-                    <tbody><Card image={this.state.image} handleBtnClick={this.handleBtnClick} /></tbody>
-
+                    <tbody>{this.state.picture}</tbody>
                 </table>
-
-
             </div>
         );
     }
