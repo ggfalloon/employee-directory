@@ -3,13 +3,12 @@ import API from "../utils/API";
 
 
 class EmployeeTable extends Component {
-    state = {
-        picture: "",
-        name: "",
-        email: "",
-        phone: 0,
-        location: "",
-        age: 0
+    constructor(props) {
+        super(props)
+        this.state = {
+            results: [],
+            error: false
+        };
     };
 
     // When the component mounts, load the next dog to be displayed
@@ -21,35 +20,50 @@ class EmployeeTable extends Component {
     loadAllEmps = () => {
         API.getAllEmp()
             .then(res =>
-                this.setState([{
-                    picture: res.data.picture,
-                    name: res.data.name,
-                    email: res.data.email,
-                    phone: res.data.phone,
-                    location: res.data.location,
-                    age: res.data.age
-                }])
+                this.setState({
+                    results: res.data.results
+                })
             )
             .catch(err => console.log(err));
+
     };
 
+
+    renderTable = () => {
+        return this.state.results.map(results => {
+            return (
+                <tr key={results.id} >
+                    <td>{results.name}</td>
+                </tr>
+            )
+        })
+    }
+
+
     render() {
-        // const rows = [];
-        // const employee = this.props.name
+        const { results, error } = this.state
 
-        // this.props.employees.forEach((employee) =>
-        // rows.push({this.employee.state})
+        if (error) {
+            return <div>Error ...</div>
+        }
 
-        // ))
-        return (
-            <div>
-                <h1 className="text-center">Employee List</h1>
+        return results.length > 0
+            ? (
                 <table>
-                    <tbody>{this.state.picture}</tbody>
+                    <thead className="text-center">Employee List</thead>
+                    <tbody>{this.renderTable}</tbody>
                 </table>
-            </div>
-        );
+            ) : (
+                <div>No Data</div>
+            );
     }
 }
 
 export default EmployeeTable;
+
+/* picture: res.data.picture,
+    name: res.data.name,
+        email: res.data.email,
+            phone: res.data.phone,
+                location: res.data.location,
+                    age: res.data.age */

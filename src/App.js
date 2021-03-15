@@ -13,7 +13,7 @@ function App() {
       <Navbar />
       <div className="container">
         <Wrapper>
-          <h1 className="mx-auto mt-3">Employee Directory</h1>
+          <h1 className="mx-auto text-center">Employee Directory</h1>
           <div className="row mt-3">
             <div className="col-sm">
               <EmpFilter />
