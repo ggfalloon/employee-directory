@@ -33,7 +33,12 @@ class EmployeeTable extends Component {
         return this.state.results.map(results => {
             return (
                 <tr key={results.id} >
-                    <td>{results.name}</td>
+                    <td>{`${results.picture}\n
+                    ${results.name}\n
+                    ${results.email}\n
+                    ${results.phone}\n
+                    ${results.location.city}, ${results.location.state}\n
+                    ${results.dob.age}`}</td>
                 </tr>
             )
         })
@@ -51,7 +56,7 @@ class EmployeeTable extends Component {
             ? (
                 <table>
                     <thead className="text-center">Employee List</thead>
-                    <tbody>{this.renderTable}</tbody>
+                    <tbody>{this.renderTable()}</tbody>
                 </table>
             ) : (
                 <div>No Data</div>
@@ -60,10 +65,3 @@ class EmployeeTable extends Component {
 }
 
 export default EmployeeTable;
-
-/* picture: res.data.picture,
-    name: res.data.name,
-        email: res.data.email,
-            phone: res.data.phone,
-                location: res.data.location,
-                    age: res.data.age */
