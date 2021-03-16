@@ -14,7 +14,7 @@ function App() {
           <hr></hr>
           <div className="row mt-3">
             <div className="col-sm">
-              <div className="table-responsive">
+              <div>
                 <EmployeeTable />
               </div>
             </div>

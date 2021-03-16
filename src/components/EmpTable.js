@@ -92,10 +92,9 @@ class EmployeeTable extends Component {
         return results.length > 0
             ? (
                 <div className="row mt-3">
-                    <div className="col-8">
-                        <EmpSort sortEmps={this.sortEmps} />
-                        <EmpFilter filterOne={this.filterOne} filterTwo={this.filterTwo} filterThree={this.filterThree} />
-
+                    <EmpSort sortEmps={this.sortEmps} />
+                    <EmpFilter filterOne={this.filterOne} filterTwo={this.filterTwo} filterThree={this.filterThree} />
+                    <div className="col-12">
                         <table className="table table-striped justify-content-center col-4 mt-3">
                             <tbody>{this.renderTable()}</tbody>
                         </table>
