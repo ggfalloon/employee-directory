@@ -44,9 +44,23 @@ class EmployeeTable extends Component {
         this.setState({ filteredResults })
     }
 
-    // filterAge = () => {
-    //     const filteredResults = this.state.results.filter
-    // }
+    filterOne = () => {
+        const filteredResults = this.state.results.filter(results => results.dob.age <= 35);
+        console.log(filteredResults);
+        this.setState({ filteredResults })
+    }
+
+    filterTwo = () => {
+        const filteredResults = this.state.results.filter(results => results.dob.age >= 36 && results.dob.age <= 55);
+        console.log(filteredResults);
+        this.setState({ filteredResults })
+    }
+
+    filterThree = () => {
+        const filteredResults = this.state.results.filter(results => results.dob.age >= 56);
+        console.log(filteredResults);
+        this.setState({ filteredResults })
+    }
 
 
     renderTable = () => {
@@ -75,7 +89,7 @@ class EmployeeTable extends Component {
         return results.length > 0
             ? (
                 <div><EmpSort sortEmps={this.sortEmps} />
-                    <EmpFilter />
+                    <EmpFilter filterOne={this.filterOne} filterTwo={this.filterTwo} filterThree={this.filterThree} />
                     <table className="table table-striped">
                         <tbody>{this.renderTable()}</tbody>
                     </table>
