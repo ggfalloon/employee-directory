@@ -3,7 +3,7 @@ import API from "../utils/API";
 import EmpFilter from "./EmpFilter";
 import EmpSort from "./EmpSort";
 
-
+// Sets up EmployeeTable class and state bringing down props to be used by children
 class EmployeeTable extends Component {
     constructor(props) {
         super(props)
@@ -14,12 +14,12 @@ class EmployeeTable extends Component {
         };
     };
 
-    // When the component mounts, load the next dog to be displayed
+    // When the component mounts, load the all employees
     componentDidMount() {
         this.loadAllEmps();
     }
 
-    // Replace our component's state with newState, load the next dog image
+    // Replace our component's state with newState from API
     loadAllEmps = () => {
         API.getAllEmp()
             .then(res =>
@@ -32,6 +32,7 @@ class EmployeeTable extends Component {
 
     };
 
+    // Function used to Sort employees by city
     sortEmps = () => {
         const filteredResults =
             this.state.results.sort(function (a, b) {
@@ -44,6 +45,7 @@ class EmployeeTable extends Component {
         this.setState({ filteredResults })
     }
 
+    // Functions below are used in the filter by age component
     filterOne = () => {
         const filteredResults = this.state.results.filter(results => results.dob.age <= 35);
         console.log(filteredResults);
@@ -62,40 +64,47 @@ class EmployeeTable extends Component {
         this.setState({ filteredResults })
     }
 
+    // Function that renders a table of employees
 
     renderTable = () => {
         return this.state.filteredResults.map(results => {
             return (
                 <tr key={results.id.value} >
                     <td className="card"><img src={results.picture.medium} alt='employee pic' width='150'></img>
-                    Name: {results.name.first} {results.name.last}
-                    Email: {results.email}
-                    Phone: {results.phone}
-                    Location: {results.location.city}, {results.location.state}
-                    Age: {results.dob.age}</td>
+                        <h3>{results.name.first} {results.name.last}</h3>
+                        <h5>Email: {results.email}</h5>
+                        <h5>Phone: {results.phone}</h5>
+                        <h5>Location: {results.location.city}, {results.location.state}</h5>
+                        <h5>Age: {results.dob.age}</h5></td>
                 </tr >
             )
         })
     }
 
-
+    // Render function renders actions on the page.
     render() {
         const { results, error } = this.state
 
         if (error) {
-            return <div>Error ...</div>
+            return <div>Error...</div>
         }
 
         return results.length > 0
             ? (
-                <div><EmpSort sortEmps={this.sortEmps} />
-                    <EmpFilter filterOne={this.filterOne} filterTwo={this.filterTwo} filterThree={this.filterThree} />
-                    <table className="table table-striped">
-                        <tbody>{this.renderTable()}</tbody>
-                    </table>
+                <div className="row mt-3">
+                    <div className="col-8">
+                        <EmpSort sortEmps={this.sortEmps} />
+                        <EmpFilter filterOne={this.filterOne} filterTwo={this.filterTwo} filterThree={this.filterThree} />
+
+                        <table className="table table-striped justify-content-center col-4 mt-3">
+                            <tbody>{this.renderTable()}</tbody>
+                        </table>
+                    </div>
+
                 </div>
+
             ) : (
-                <div>No Data</div>
+                <div>Data Loading...</div>
             );
     }
 }
