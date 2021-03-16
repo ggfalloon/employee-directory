@@ -6,13 +6,3 @@ export default {
     }
 
 };
-
-   // getByLocation: function (location) {
-    //     return axios.get();
-    // },
-    // filterByAge: function () {
-    //     return axios.get();
-    // },
-    // getRandomEmp: function () {
-    //     return axios.get();
-    // }

@@ -53,12 +53,12 @@ class EmployeeTable extends Component {
         return this.state.filteredResults.map(results => {
             return (
                 <tr key={results.id.value} >
-                    <td className="card"><img src={results.picture.medium} alt='employee pic' width='150'></img></td>
-                    <td> Name: {results.name.first} {results.name.last}</td>
-                    <td>Email: {results.email}</td>
-                    <td>Phone: {results.phone}</td>
-                    <td>Location: {results.location.city}, {results.location.state}</td>
-                    <td>Age: {results.dob.age}</td>
+                    <td className="card"><img src={results.picture.medium} alt='employee pic' width='150'></img>
+                    Name: {results.name.first} {results.name.last}
+                    Email: {results.email}
+                    Phone: {results.phone}
+                    Location: {results.location.city}, {results.location.state}
+                    Age: {results.dob.age}</td>
                 </tr >
             )
         })
