@@ -36,8 +36,8 @@ class EmployeeTable extends Component {
     sortEmps = () => {
         const filteredResults =
             this.state.results.sort(function (a, b) {
-                if (a.location.city < b.location.city) { return -1; }
-                if (a.location.city > b.location.city) { return 1; }
+                if (a.name.first < b.name.first) { return -1; }
+                if (a.name.first > b.name.first) { return 1; }
                 return 0;
             })
 
