@@ -69,14 +69,15 @@ class EmployeeTable extends Component {
     renderTable = () => {
         return this.state.filteredResults.map(results => {
             return (
-                <tr key={results.id.value} >
-                    <td className="card"><img src={results.picture.medium} alt='employee pic' width='150'></img>
-                        <h3>{results.name.first} {results.name.last}</h3>
-                        <h5>Email: {results.email}</h5>
-                        <h5>Phone: {results.phone}</h5>
-                        <h5>Location: {results.location.city}, {results.location.state}</h5>
-                        <h5>Age: {results.dob.age}</h5></td>
-                </tr >
+                <div className="card col-md-4 mt-3 mr-3 mx-auto" key={results.id.value} >
+                    <img src={results.picture.medium} alt='employee pic' width='150'></img>
+                    <h3>{results.name.first} {results.name.last}</h3>
+                    <h5>Email: {results.email}</h5>
+                    <h5>Phone: {results.phone}</h5>
+                    <h5>Location: {results.location.city}, {results.location.state}</h5>
+                    <h5>Age: {results.dob.age}</h5>
+                </div>
+
             )
         })
     }
@@ -92,12 +93,12 @@ class EmployeeTable extends Component {
         return results.length > 0
             ? (
                 <div className="row mt-3">
-                    <EmpSort sortEmps={this.sortEmps} />
+                    <EmpSort sortEmps={this.sortEmps} />&nbsp;
                     <EmpFilter filterOne={this.filterOne} filterTwo={this.filterTwo} filterThree={this.filterThree} />
                     <div className="col-12">
-                        <table className="table table-striped justify-content-center col-4 mt-3">
-                            <tbody>{this.renderTable()}</tbody>
-                        </table>
+                        <div className="row">
+                            {this.renderTable()}
+                        </div>
                     </div>
 
                 </div>
