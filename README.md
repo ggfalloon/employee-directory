@@ -1,7 +1,7 @@
 # Employee Directory
 
 ## Description
-Quickly access the information you need regarding your employees. Sort your employees by city name and even filter your results by age group. You'll have quick access to their information all in one place.
+Quickly access the information you need regarding your employees through the responsive Employee Directory application built with React. Sort your employees by city name and even filter your results by age group. You'll have quick access to their information all in one place.
 
 ## Table of Contents
 
