@@ -44,7 +44,9 @@ class EmployeeTable extends Component {
         this.setState({ filteredResults })
     }
 
-    filterAge
+    // filterAge = () => {
+    //     const filteredResults = this.state.results.filter
+    // }
 
 
     renderTable = () => {
@@ -55,8 +57,8 @@ class EmployeeTable extends Component {
                     <td> Name: {results.name.first} {results.name.last}</td>
                     <td>Email: {results.email}</td>
                     <td>Phone: {results.phone}</td>
-                    Location: {results.location.city}, {results.location.state}\n
-                    Age: {results.dob.age}
+                    <td>Location: {results.location.city}, {results.location.state}</td>
+                    <td>Age: {results.dob.age}</td>
                 </tr >
             )
         })
@@ -75,7 +77,6 @@ class EmployeeTable extends Component {
                 <div><EmpSort sortEmps={this.sortEmps} />
                     <EmpFilter />
                     <table className="table table-striped">
-                        <thead className="text-center">Employee List</thead>
                         <tbody>{this.renderTable()}</tbody>
                     </table>
                 </div>
