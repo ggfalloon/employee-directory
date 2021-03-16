@@ -3,8 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/Navbar";
 import Wrapper from "./components/Wrapper";
 import EmployeeTable from "./components/EmpTable";
-import EmpFilter from "./components/EmpFilter";
-import EmpSort from "./components/EmpSort";
+
 
 
 function App() {
@@ -16,13 +15,13 @@ function App() {
           <h1 className="mx-auto text-center">Employee Directory</h1>
           <div className="row mt-3">
             <div className="col-sm">
-              <EmpFilter />
+
             </div>
             <div className="col-sm">
-              <EmpSort />
+
             </div>
           </div>
-          <div className="row mt-3">
+          <div className="table-responsive">
             <EmployeeTable />
 
           </div>

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import EmpFilter from "./EmpFilter";
+import EmpSort from "./EmpSort";
 
 
 class EmployeeTable extends Component {
@@ -7,6 +9,7 @@ class EmployeeTable extends Component {
         super(props)
         this.state = {
             results: [],
+            filteredResults: [],
             error: false
         };
     };
@@ -21,25 +24,40 @@ class EmployeeTable extends Component {
         API.getAllEmp()
             .then(res =>
                 this.setState({
-                    results: res.data.results
+                    results: res.data.results,
+                    filteredResults: res.data.results,
                 })
             )
             .catch(err => console.log(err));
 
     };
 
+    sortEmps = () => {
+        const filteredResults =
+            this.state.results.sort(function (a, b) {
+                if (a.location.city < b.location.city) { return -1; }
+                if (a.location.city > b.location.city) { return 1; }
+                return 0;
+            })
+
+        console.log(filteredResults);
+        this.setState({ filteredResults })
+    }
+
+    filterAge
+
 
     renderTable = () => {
-        return this.state.results.map(results => {
+        return this.state.filteredResults.map(results => {
             return (
-                <tr key={results.id} >
-                    <td>{`${results.picture}\n
-                    ${results.name}\n
-                    ${results.email}\n
-                    ${results.phone}\n
-                    ${results.location.city}, ${results.location.state}\n
-                    ${results.dob.age}`}</td>
-                </tr>
+                <tr key={results.id.value} >
+                    <td className="card"><img src={results.picture.medium} alt='employee pic' width='150'></img></td>
+                    <td> Name: {results.name.first} {results.name.last}</td>
+                    <td>Email: {results.email}</td>
+                    <td>Phone: {results.phone}</td>
+                    Location: {results.location.city}, {results.location.state}\n
+                    Age: {results.dob.age}
+                </tr >
             )
         })
     }
@@ -54,10 +72,13 @@ class EmployeeTable extends Component {
 
         return results.length > 0
             ? (
-                <table>
-                    <thead className="text-center">Employee List</thead>
-                    <tbody>{this.renderTable()}</tbody>
-                </table>
+                <div><EmpSort sortEmps={this.sortEmps} />
+                    <EmpFilter />
+                    <table className="table table-striped">
+                        <thead className="text-center">Employee List</thead>
+                        <tbody>{this.renderTable()}</tbody>
+                    </table>
+                </div>
             ) : (
                 <div>No Data</div>
             );
